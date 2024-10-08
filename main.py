@@ -123,10 +123,11 @@ if exercise_type == "Standardna konverzija":
             st.error(f"Netočno. Točan odgovor je Dsph: {correct_dsph:+}, Dcyl: {correct_dcyl:+}, Os: {correct_axis}°")
     
     if st.button("Generiraj novi zadatak"):
-        st.session_state.standard_task = generate_standard_task()
+        # st.session_state.standard_task = generate_standard_task()
         st.session_state.user_dsph = 0
         st.session_state.user_dcyl = 0
         st.session_state.user_axis = 0
+        st.session_state.standard_task = generate_standard_task()
         st.rerun()
 
 
