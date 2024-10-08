@@ -68,12 +68,13 @@ exercise_type = st.radio(
 def standard_conversion_input():
     cols = st.columns(3)
     with cols[0]:
-        user_dsph = st.number_input("Novi dsph", value=None, step=0.25, format="%.2f")
+        user_dsph = st.number_input("Novi dsph", value=st.session_state.get('user_dsph', 0.0), step=0.25, format="%.2f")
     with cols[1]:
-        user_dcyl = st.number_input("Novi dcyl", value=None, step=0.25, format="%.2f")
+        user_dcyl = st.number_input("Novi dcyl", value=st.session_state.get('user_dcyl', 0.0), step=0.25, format="%.2f")
     with cols[2]:
-        user_axis = st.number_input("Nova os", value=None, min_value=0, max_value=180, step=1, format="%d")
+        user_axis = st.number_input("Nova os", value=st.session_state.get('user_axis', 0), min_value=0, max_value=180, step=1, format="%d")
     return user_dsph, user_dcyl, user_axis
+
 
 
 # Funkcija za unos korisničkih odgovora za ukrštene cilindre
@@ -123,8 +124,12 @@ if exercise_type == "Standardna konverzija":
             st.error(f"Netočno. Točan odgovor je Dsph: {correct_dsph:+}, Dcyl: {correct_dcyl:+}, Os: {correct_axis}°")
     
     if st.button("Generiraj novi zadatak"):
-        st.session_state.standard_task = generate_standard_task()
-        st.rerun()
+    st.session_state.standard_task = generate_standard_task()
+    # Reset user inputs for standard conversion
+    st.session_state.user_dsph = 0.0
+    st.session_state.user_dcyl = 0.0
+    st.session_state.user_axis = 0
+    st.rerun()
 
 else:
     if 'cross_cylinder_task' not in st.session_state:
