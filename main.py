@@ -124,7 +124,11 @@ if exercise_type == "Standardna konverzija":
     
     if st.button("Generiraj novi zadatak"):
         st.session_state.standard_task = generate_standard_task()
+        st.session_state.user_dsph = 0
+        st.session_state.user_dcyl = 0
+        st.session_state.user_axis = 0
         st.rerun()
+
 
 else:
     if 'cross_cylinder_task' not in st.session_state:
@@ -163,5 +167,12 @@ else:
     
     if st.button("Generiraj novi zadatak"):
         st.session_state.cross_cylinder_task = generate_cross_cylinder_task()
+        st.session_state.user_dsph1 = 0
+        st.session_state.user_dcyl1 = 0
+        st.session_state.user_axis1 = 0
+        st.session_state.user_dsph2 = 0
+        st.session_state.user_dcyl2 = 0
+        st.session_state.user_axis2 = 0
         st.rerun()
+
 
