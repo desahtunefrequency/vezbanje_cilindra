@@ -124,7 +124,7 @@ if exercise_type == "Standardna konverzija":
     
     if st.button("Generiraj novi zadatak"):
         st.session_state.standard_task = generate_standard_task()
-        st.experimental_rerun()
+        st.rerun()
 
 else:
     if 'cross_cylinder_task' not in st.session_state:
@@ -163,5 +163,5 @@ else:
     
     if st.button("Generiraj novi zadatak"):
         st.session_state.cross_cylinder_task = generate_cross_cylinder_task()
-        st.experimental_rerun()
+        st.rerun()
 
