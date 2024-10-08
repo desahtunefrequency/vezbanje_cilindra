@@ -126,7 +126,8 @@ if exercise_type == "Standardna konverzija":
     if st.button("Generiraj novi zadatak"):
         # st.session_state.standard_task = generate_standard_task()
         # Reset user inputs for standard conversion
-        st.session_state.user_dsph = 0.0
+        # st.session_state.user_dsph = 0.0
+        user_dsph = 0.0
         st.session_state.user_dcyl = 0.0
         st.session_state.user_axis = 0
         st.session_state.standard_task = generate_standard_task()
